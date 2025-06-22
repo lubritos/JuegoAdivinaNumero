@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class JuegoAdivinar {
 
 	static Scanner scn = new Scanner(System.in);
+	// Atributos
 	private int intentos;
 	private int numeroMagico;
 	private int intentosRealizados;
@@ -77,27 +78,30 @@ public class JuegoAdivinar {
 	}
 
 	public void Comenzar(int maxNumero) {
+		// Mientras la cantidad de intentos realizados sea igual o menor 
+		// al maximo de intentos solicitamos que ingrese un número
 		while (this.intentosRealizados <= this.maxIntentos) {
 			System.out.println("Intento " + (this.intentosRealizados));
 			System.out.println("Ingrese un numero: ");
+			// Solicitamos un numero valitdando que sea número y que no supere el maximo de intentos permitidos
 			this.intentos = validarNumero(maxNumero);
-			
+			// Si el número ingresado es igual al número magico le damos el mensaje de que gano
 			if (this.intentos == this.numeroMagico) {
 				System.out.println("¡Adivinaste el numero! ");
 				scn.nextLine();
 				System.out.println("Si queres seguir jugando toca la opcion!");
 				return;
-			} 
+			}
 			
 			if (this.intentos < this.numeroMagico && this.intentosRealizados != this.maxIntentos) {
 				System.out.println("El Número es Mayor. ");
-			} 
+			}
 			if (this.intentos > this.numeroMagico && this.intentosRealizados != this.maxIntentos) {
 				System.out.println("El Número es Menor. ");
 			}
 			this.intentosRealizados++;
 		}
-		
+		// Si no logró adivinar y ya supero la cantidad de intentos se da el mensaje de que perdió
 		System.out.println("¡Perdiste! El numero magico era: " + this.numeroMagico);
 		scn.nextLine();
 		System.out.println("Si queres seguir jugando toca la opcion!");
